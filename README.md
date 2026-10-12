@@ -35,6 +35,33 @@ Everything goes to `output/<target>/`: one log per tool, `findings.json` (emails
 python main.py -c "target domain example.com" -c "auto -j 4" -c "report"
 ```
 
+## Credits
+
+raven is only a front end. All the real work is done by these projects, cloned into this folder. Credit and licences belong to their authors.
+
+| Tool | Repo |
+| --- | --- |
+| blackbird | [p1ngul1n0/blackbird](https://github.com/p1ngul1n0/blackbird) |
+| dnstwist | [elceef/dnstwist](https://github.com/elceef/dnstwist) |
+| EyeWitness | [RedSiege/EyeWitness](https://github.com/RedSiege/EyeWitness) |
+| GHunt | [mxrch/GHunt](https://github.com/mxrch/GHunt) |
+| h8mail | [khast3x/h8mail](https://github.com/khast3x/h8mail) |
+| holehe | [megadose/holehe](https://github.com/megadose/holehe) |
+| ignorant | [megadose/ignorant](https://github.com/megadose/ignorant) |
+| instaloader | [instaloader/instaloader](https://github.com/instaloader/instaloader) |
+| maigret | [soxoj/maigret](https://github.com/soxoj/maigret) |
+| metagoofil | [opsdisk/metagoofil](https://github.com/opsdisk/metagoofil) (maintained fork of [laramies/metagoofil](https://github.com/laramies/metagoofil)) |
+| Photon | [s0md3v/Photon](https://github.com/s0md3v/Photon) |
+| recon-ng | [lanmaster53/recon-ng](https://github.com/lanmaster53/recon-ng) |
+| sherlock | [sherlock-project/sherlock](https://github.com/sherlock-project/sherlock) |
+| shodan-python | [achillean/shodan-python](https://github.com/achillean/shodan-python) |
+| social-analyzer | [qeeqbox/social-analyzer](https://github.com/qeeqbox/social-analyzer) |
+| SpiderFoot | [smicallef/spiderfoot](https://github.com/smicallef/spiderfoot) |
+| Sublist3r | [aboul3la/Sublist3r](https://github.com/aboul3la/Sublist3r) |
+| theHarvester | [laramies/theHarvester](https://github.com/laramies/theHarvester) |
+| toutatis | [megadose/toutatis](https://github.com/megadose/toutatis) |
+| waybackpy | [akamhy/waybackpy](https://github.com/akamhy/waybackpy) |
+
 ## Needs setup first
 
 - ghunt: log in once (menu `11`).
