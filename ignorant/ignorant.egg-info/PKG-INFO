@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: ignorant
+Version: 1.2
+Summary: ignorant allows you to check if a phone is used on different sites like snapchat.
+Home-page: http://github.com/megadose/ignorant
+Author: megadose
+Author-email: megadose@protonmail.com
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+License-File: LICENSE
+Requires-Dist: termcolor
+Requires-Dist: bs4
+Requires-Dist: httpx
+Requires-Dist: trio
+Requires-Dist: argparse
+Requires-Dist: tqdm
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary

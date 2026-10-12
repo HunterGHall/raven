@@ -1,0 +1,2 @@
+[console_scripts]
+ignorant = ignorant.core:main

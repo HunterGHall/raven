@@ -1,0 +1,10 @@
+black
+click
+codecov
+flake8
+mypy
+pytest
+pytest-cov
+requests
+setuptools>=46.4.0
+types-requests

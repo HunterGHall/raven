@@ -1,0 +1,722 @@
+2026-10-12 16:21:29,016 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-10-12 16:21:29,035 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.eventbrite.com:443
+2026-10-12 16:21:29,646 - urllib3.connectionpool - DEBUG - https://www.eventbrite.com:443 "GET / HTTP/1.1" 200 34227
+2026-10-12 16:23:52,187 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-10-12 16:23:52,209 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.eventbrite.com:443
+2026-10-12 16:23:52,424 - urllib3.connectionpool - DEBUG - https://www.eventbrite.com:443 "GET / HTTP/1.1" 200 34133
+2026-10-12 16:28:53,394 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2026-10-12 16:28:53,557 - urllib3.connectionpool - DEBUG - https://raw.githubusercontent.com:443 "GET /WebBreacher/WhatsMyName/main/wmn-data.json HTTP/1.1" 200 46141
+2026-10-12 16:28:53,601 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-10-12 16:29:09,144 - root - ERROR - Error in Async HTTP Request [GET] https://quitter.pl/api/v1/accounts/olivervane | Cannot connect to host quitter.pl:443 ssl:False [[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1032)]
+2026-10-12 16:29:09,144 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1337, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1202, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ssl_shutdown_timeout=ssl_shutdown_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1235, in _create_connection_transport
+    await waiter
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\sslproto.py", line 581, in _on_handshake_complete
+    raise handshake_exc
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\sslproto.py", line 563, in _do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 951, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLError: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1032)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1641, in _create_direct_connection
+    raise last_exc
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1341, in _wrap_create_connection
+    raise ClientConnectorSSLError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorSSLError: Cannot connect to host quitter.pl:443 ssl:False [[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1032)]
+
+2026-10-12 16:29:18,253 - root - ERROR - Error in Async HTTP Request [GET] https://trakt.tv/users/olivervane | 400, message='Got more than 8190 bytes when reading: b\'</_app/immutable/assets/CrossOriginImage.BtWBJVoV.css>; rel="preload"; as="style"; nopush, </_app/im...\'.', url='https://app.trakt.tv/profile/olivervane'
+2026-10-12 16:29:18,253 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client_proto.py", line 359, in data_received
+    messages, upgraded, tail = self._parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 723, in aiohttp._http_parser.HttpParser.feed_data
+  File "aiohttp/_http_parser.pyx", line 925, in aiohttp._http_parser.cb_on_header_value
+    raise LineTooLong(value[:100] + b"...", pyparser._max_field_size)
+aiohttp.http_exceptions.LineTooLong: 400, message:
+  Got more than 8190 bytes when reading: b'</_app/immutable/assets/CrossOriginImage.BtWBJVoV.css>; rel="preload"; as="style"; nopush, </_app/im...'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 745, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\streams.py", line 716, in read
+    await self._waiter
+aiohttp.http_exceptions.HttpProcessingError: 400, message:
+  Got more than 8190 bytes when reading: b'</_app/immutable/assets/CrossOriginImage.BtWBJVoV.css>; rel="preload"; as="style"; nopush, </_app/im...'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 878, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 747, in start
+    raise ClientResponseError(
+    ...<5 lines>...
+    ) from exc
+aiohttp.client_exceptions.ClientResponseError: 400, message='Got more than 8190 bytes when reading: b\'</_app/immutable/assets/CrossOriginImage.BtWBJVoV.css>; rel="preload"; as="style"; nopush, </_app/im...\'.', url='https://app.trakt.tv/profile/olivervane'
+
+2026-10-12 16:29:23,071 - root - ERROR - Error in Async HTTP Request [GET] https://myspreadshop.de/olivervane/shopData/list | Cannot connect to host myspreadshop.de:443 ssl:False [DNS server returned answer with no data]
+2026-10-12 16:29:23,071 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\resolver.py", line 135, in resolve
+    resp = await self._resolver.getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+aiodns.error.DNSError: (1, 'DNS server returned answer with no data')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1592, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1202, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1233, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\resolver.py", line 154, in resolve
+    raise OSError(None, msg) from exc
+OSError: [Errno None] DNS server returned answer with no data
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1598, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host myspreadshop.de:443 ssl:False [DNS server returned answer with no data]
+
+2026-10-12 16:29:24,291 - root - ERROR - Error in Async HTTP Request [GET] https://www.tf2items.com/id/olivervane | TimeoutError()
+2026-10-12 16:29:24,291 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 745, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\streams.py", line 716, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 878, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 740, in start
+    with self._timer:
+         ^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\helpers.py", line 759, in __exit__
+    raise asyncio.TimeoutError from exc_val
+TimeoutError
+
+2026-10-12 16:29:26,292 - root - ERROR - Error in Async HTTP Request [GET] https://www.tumblr.com/olivervane | Server disconnected
+2026-10-12 16:29:26,292 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 878, in _connect_and_send_request
+    await resp.start(conn)
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client_reqrep.py", line 745, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\streams.py", line 716, in read
+    await self._waiter
+aiohttp.client_exceptions.ServerDisconnectedError: Server disconnected
+
+2026-10-12 16:29:27,040 - chardet.charsetprober - DEBUG - EUC-JP Japanese prober hit error at byte 4306
+2026-10-12 16:29:27,228 - chardet.charsetprober - DEBUG - EUC-KR Korean prober hit error at byte 4306
+2026-10-12 16:29:27,446 - chardet.charsetprober - DEBUG - CP949 Korean prober hit error at byte 257608
+2026-10-12 16:29:27,781 - chardet.charsetprober - DEBUG - EUC-TW Taiwan prober hit error at byte 4306
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - utf-8 not active
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - EUC-JP not active
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - GB2312 Chinese confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - EUC-KR not active
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - CP949 not active
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - Big5 Chinese confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - EUC-TW not active
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - Johab Korean confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - windows-1251 Russian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - KOI8-R Russian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - ISO-8859-5 Russian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - MacCyrillic Russian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - IBM866 Russian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - IBM855 Russian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - ISO-8859-7 Greek confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - windows-1253 Greek confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - ISO-8859-5 Bulgarian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - windows-1251 Bulgarian confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - TIS-620 Thai confidence = 0.01
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - ISO-8859-9 Turkish confidence = 0.5760050044292765
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2026-10-12 16:29:28,750 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.019905299761885712
+2026-10-12 16:29:28,751 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.002488162470235714
+2026-10-12 16:29:31,512 - root - ERROR - Error in Async HTTP Request [GET] https://forum.igromania.ru/member.php?username=olivervane | Cannot connect to host forum.igromania.ru:443 ssl:False [The semaphore timeout period has expired]
+2026-10-12 16:29:31,512 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1322, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 122, in start_connection
+    raise first_exception
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 724, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 807, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+OSError: [WinError 121] The semaphore timeout period has expired
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1641, in _create_direct_connection
+    raise last_exc
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1345, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host forum.igromania.ru:443 ssl:False [The semaphore timeout period has expired]
+
+2026-10-12 16:29:36,603 - root - ERROR - Error in Async HTTP Request [GET] https://friendfinder.com/profile/olivervane | Cannot connect to host friendfinder.com:443 ssl:False [[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1032)]
+2026-10-12 16:29:36,603 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1337, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1202, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ssl_shutdown_timeout=ssl_shutdown_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1235, in _create_connection_transport
+    await waiter
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\sslproto.py", line 581, in _on_handshake_complete
+    raise handshake_exc
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\sslproto.py", line 563, in _do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 951, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLError: [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1032)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1641, in _create_direct_connection
+    raise last_exc
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1341, in _wrap_create_connection
+    raise ClientConnectorSSLError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorSSLError: Cannot connect to host friendfinder.com:443 ssl:False [[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1032)]
+
+2026-10-12 16:29:37,975 - root - ERROR - Error in Async HTTP Request [GET] https://au.ru/user/olivervane/ | Cannot connect to host au.ru:443 ssl:False [Timeout while contacting DNS servers]
+2026-10-12 16:29:37,975 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\resolver.py", line 135, in resolve
+    resp = await self._resolver.getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+aiodns.error.DNSError: (12, 'Timeout while contacting DNS servers')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1592, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1202, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1233, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\resolver.py", line 154, in resolve
+    raise OSError(None, msg) from exc
+OSError: [Errno None] Timeout while contacting DNS servers
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1598, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host au.ru:443 ssl:False [Timeout while contacting DNS servers]
+
+2026-10-12 16:29:59,053 - root - ERROR - Error in Async HTTP Request [GET] https://orbys.net/olivervane | Cannot connect to host orbys.net:443 ssl:False [The semaphore timeout period has expired]
+2026-10-12 16:29:59,053 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1322, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 122, in start_connection
+    raise first_exception
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 724, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 807, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+OSError: [WinError 121] The semaphore timeout period has expired
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1641, in _create_direct_connection
+    raise last_exc
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1345, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host orbys.net:443 ssl:False [The semaphore timeout period has expired]
+
+2026-10-12 16:30:02,677 - root - ERROR - Error in Async HTTP Request [GET] https://tamtam.chat/olivervane | market://details?id=ru.ok.messages&referrer=utm_medium%3Dbanner%26utm_campaign%3D8153459%26utm_content%3D27267954%26utm_source%3D1link.mail.ru%26rb_clickid%3D27267954-1791837055-251841293-0-7c2caf4784f18bf0f45f8094085bf3e16acd437f80c6b2efde9b172f5bc23c86c602c7c6448fcbff
+2026-10-12 16:30:02,677 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 1009, in _request
+    raise NonHttpUrlRedirectClientError(r_url)
+aiohttp.client_exceptions.NonHttpUrlRedirectClientError: market://details?id=ru.ok.messages&referrer=utm_medium%3Dbanner%26utm_campaign%3D8153459%26utm_content%3D27267954%26utm_source%3D1link.mail.ru%26rb_clickid%3D27267954-1791837055-251841293-0-7c2caf4784f18bf0f45f8094085bf3e16acd437f80c6b2efde9b172f5bc23c86c602c7c6448fcbff
+
+2026-10-12 16:30:08,506 - root - ERROR - Error in Async HTTP Request [GET] https://dota2.ru/forum/search/?type=user&keywords=olivervane&sort_by=username | Cannot connect to host dota2.ru:443 ssl:False [Timeout while contacting DNS servers]
+2026-10-12 16:30:08,506 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\resolver.py", line 135, in resolve
+    resp = await self._resolver.getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+aiodns.error.DNSError: (12, 'Timeout while contacting DNS servers')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1592, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1202, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1233, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\resolver.py", line 154, in resolve
+    raise OSError(None, msg) from exc
+OSError: [Errno None] Timeout while contacting DNS servers
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1598, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host dota2.ru:443 ssl:False [Timeout while contacting DNS servers]
+
+2026-10-12 16:30:11,298 - root - ERROR - Error in Async HTTP Request [GET] https://www.gigapan.com/profiles/olivervane | TimeoutError()
+2026-10-12 16:30:11,299 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1322, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 724, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 737, in _request
+    with timer:
+         ^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\helpers.py", line 759, in __exit__
+    raise asyncio.TimeoutError from exc_val
+TimeoutError
+
+2026-10-12 16:30:14,131 - root - ERROR - Error in Async HTTP Request [GET] https://chaos.social/@olivervane | Cannot connect to host chaos.social:443 ssl:False [Multiple exceptions: [WinError 121] The semaphore timeout period has expired, [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help]
+2026-10-12 16:30:14,131 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1322, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohappyeyeballs\impl.py", line 141, in start_connection
+    raise OSError(first_errno, msg)
+OSError: [Errno 22] Multiple exceptions: [WinError 121] The semaphore timeout period has expired, [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1641, in _create_direct_connection
+    raise last_exc
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1345, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host chaos.social:443 ssl:False [Multiple exceptions: [WinError 121] The semaphore timeout period has expired, [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help]
+
+2026-10-12 16:30:14,306 - root - ERROR - Error in Async HTTP Request [GET] https://olivervane.livejournal.com | TimeoutError()
+2026-10-12 16:30:14,306 - root - ERROR - Traceback (most recent call last):
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 900, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 854, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 665, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1263, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1610, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\connector.py", line 1337, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1202, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ssl_shutdown_timeout=ssl_shutdown_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hunte\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1235, in _create_connection_transport
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\dev\raven\blackbird\src\modules\utils\http_client.py", line 53, in do_async_request
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\client.py", line 737, in _request
+    with timer:
+         ^^^^^
+  File "C:\dev\raven\.venv\Lib\site-packages\aiohttp\helpers.py", line 759, in __exit__
+    raise asyncio.TimeoutError from exc_val
+TimeoutError
+
+2026-10-12 16:33:56,095 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2026-10-12 16:33:56,197 - urllib3.connectionpool - DEBUG - https://raw.githubusercontent.com:443 "GET /WebBreacher/WhatsMyName/main/wmn-data.json HTTP/1.1" 200 46141
+2026-10-12 16:33:56,222 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-10-12 16:33:56,239 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.eventbrite.com:443
+2026-10-12 16:33:56,473 - urllib3.connectionpool - DEBUG - https://www.eventbrite.com:443 "GET / HTTP/1.1" 200 34130
